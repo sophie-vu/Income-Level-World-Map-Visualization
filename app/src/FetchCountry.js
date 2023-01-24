@@ -18,7 +18,7 @@ function CountryData() {
       <ul>
         {data.map((item, index) => (
         <li key={index}>
-          {item.name} - Income Level: {item.incomeLevel.value}
+          {item.name} - {item.iso2Code} - Income Level: {item.incomeLevel.value}
           </li>
       ))}
       </ul>
