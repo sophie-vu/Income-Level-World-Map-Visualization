@@ -24,3 +24,14 @@ http://localhost:3000/
 
 ![image](https://user-images.githubusercontent.com/71732942/214393578-8764fb6b-14df-4373-a4ed-62531f0b5b58.png)
 ![image](https://user-images.githubusercontent.com/71732942/214393893-0a667651-e194-43a6-b914-db1845317c51.png)
+
+### Contribution (~40%)
+* FetchCountry.js
+* WorldMap.js
+* App.js
+
+### References
+* https://github.com/fannarsh/country-list/blob/master/country-list.js
+* https://datahelpdesk.worldbank.org/knowledgebase/articles/898590-country-api-queries
+* https://emotion.sh/docs/styled
+* https://jvectormap.com/
