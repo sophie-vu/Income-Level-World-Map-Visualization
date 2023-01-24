@@ -2,12 +2,14 @@ import React from "react";
 import { VectorMap } from "react-jvectormap";
 import styled from "@emotion/styled";
 const { getName } = require("country-list");
-
+/**
+ * Functional code for the map component. Doesn't have the code to display the income levels yet. 
+*/
 class Map extends React.Component {
   state = {
     countriesCodesArray: [],
     countriesNamesArray: [],
-    countriesIncomeLevelsArray: [],
+    // countriesIncomeLevelsArray: [],
     data: {},
     title: "",
     titleSet: false,
@@ -18,6 +20,7 @@ class Map extends React.Component {
     this.setState({
       title: e.target.value
     });
+    console.log(e.target.value);
   };
 
   handleFormSubmit = () => {
@@ -29,6 +32,7 @@ class Map extends React.Component {
   getCountriesNamesList = () => {
     const { countriesCodesArray } = this.state;
     const list = countriesCodesArray.map(code => getName(code));
+    console.log(list);
     this.setState(
       {
         countriesNamesArray: list
@@ -36,6 +40,17 @@ class Map extends React.Component {
       () => this.makeMapDataStructure()
     );
   };
+
+  // getCountriesNamesList = () => {
+  //   const { countriesCodesArray } = this.state;
+  //   const list = countriesCodesArray.map(code => getName(code));
+  //   this.setState(
+  //     {
+  //       countriesNamesArray: list
+  //     },
+  //     () => this.makeMapDataStructure()
+  //   );
+  // };
 
   makeMapDataStructure = () => {
     const { countriesCodesArray } = this.state;
@@ -58,7 +73,6 @@ class Map extends React.Component {
           ) : (
             <div>
               <h1>Income Level Visualization on a World Map</h1>
-              
             </div>
           )}
         </Container>
@@ -89,8 +103,8 @@ class Map extends React.Component {
           series={{
             regions: [
               {
-                values: data, // this is the map data
-                scale: ["#146804", color], // your color game's here
+                values: data,
+                scale: ["#146804", color], 
                 normalizeFunction: "polynomial"
               }
             ]

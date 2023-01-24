@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "@emotion/styled";
-
+/**
+ * Calls the World Bank API and returns the data in a HTML array.
+*/
 function CountryData() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const response = await axios.get(
+      const response = await axios.get( // Axios
         "http://api.worldbank.org/v2/country?format=json"      );
       setData(response.data[1]);
     }
@@ -27,10 +29,10 @@ function CountryData() {
     }
   }
 `;
-
+  // Return the formatted data in HTML
   return (
     <div>
-      <Container>
+      <Container> 
       <ul>
         {data.map((item, index) => (
         <li key={index}>
