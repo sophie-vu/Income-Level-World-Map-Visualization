@@ -1,5 +1,9 @@
 # Income-Level-World-Map-Visualization
 
+### Functionalities
+* Visualize the income level of a country when you hover over its region.
+* Zoom into the map
+
 ### Technologies
 * React
 * axios (JS library used to make HTTP requests from Node.js)
