@@ -30,7 +30,7 @@ http://localhost:3000/
 * WorldMap.js
 * App.js
 
-### References
+### References (~60%)
 * https://github.com/fannarsh/country-list/blob/master/country-list.js
 * https://datahelpdesk.worldbank.org/knowledgebase/articles/898590-country-api-queries
 * https://emotion.sh/docs/styled
