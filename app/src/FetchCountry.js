@@ -1,24 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function CountryData() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('http://api.worldbank.org/v2/country/br?format=json')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error(error));
+    async function fetchData() {
+      const response = await axios.get(
+        "http://api.worldbank.org/v2/country?format=json"      );
+      setData(response.data[1]);
+    }
+    fetchData();
   }, []);
 
   return (
     <div>
-      {data && data.map(item => (
-        <div key={item.id}>
-          <h2>{item.name}</h2>
-          {/* <p>Income Level: {item.incomeLevel.value}</p> */}
-          {/* <p>Region: {item.region.value}</p> */}
-        </div>
+      <ul>
+        {data.map((item, index) => (
+        <li key={index}>
+          {item.name} - Income Level: {item.incomeLevel.value}
+          </li>
       ))}
+      </ul>
     </div>
   );
 }
