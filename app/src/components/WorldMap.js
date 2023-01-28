@@ -1,7 +1,8 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 import styled from "@emotion/styled";
-const { getName } = require("country-list");
+// const { getName } = require("country-list");
+import { getName } from "./CountryList";
 /**
  * Functional code for the map component. Doesn't have the code to display the income levels yet. 
 */
