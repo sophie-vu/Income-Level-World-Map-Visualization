@@ -1,5 +1,9 @@
 # Income-Level-World-Map-Visualization
 
+### Functionalities
+* Visualize the income level of a country when you hover over its region.
+* Zoom into the map
+
 ### Technologies
 * React
 * axios (JS library used to make HTTP requests from Node.js)
@@ -12,7 +16,7 @@
 1. Write the following commands in the terminal:
 ```
 git clone https://github.com/sophie-vu/Income-Level-World-Map-Visualization.git
-cd Income-Level-World-Map-Visualization
+cd Income-Level-World-Map-Visualization/app
 npm i
 npm start
 ```
@@ -20,3 +24,18 @@ npm start
 ```
 http://localhost:3000/
 ```
+3. Hover over the countries and zoom in using the leftside features.
+
+![image](https://user-images.githubusercontent.com/71732942/214393578-8764fb6b-14df-4373-a4ed-62531f0b5b58.png)
+![image](https://user-images.githubusercontent.com/71732942/214393893-0a667651-e194-43a6-b914-db1845317c51.png)
+
+### Contribution (~40%)
+* FetchCountry.js
+* WorldMap.js
+* App.js
+
+### References (~60%)
+* https://github.com/fannarsh/country-list/blob/master/country-list.js
+* https://datahelpdesk.worldbank.org/knowledgebase/articles/898590-country-api-queries
+* https://emotion.sh/docs/styled
+* https://jvectormap.com/
