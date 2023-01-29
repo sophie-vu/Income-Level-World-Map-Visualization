@@ -6,15 +6,27 @@ import styled from "@emotion/styled";
 */
 function CountryData() {
   const [data, setData] = useState([]);
-
   useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get( // Axios
-        "http://api.worldbank.org/v2/country?format=json"      );
-      setData(response.data[1]);
+  const url = "http://api.worldbank.org/v2/country?format=json";
+  const fetchData = async () => {
+    try {
+      const response = await fetch(url);
+      const json = await response.json();
+      console.log(json[1]);
+      setData(json[1]);
+    } catch (error) {
+      console.log("error", error);
     }
-    fetchData();
-  }, []);
+    // axios.get("http://api.worldbank.org/v2/country?format=json");
+  };
+  fetchData();
+}, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     setData(response.data[1]);
+  //   }
+  //   fetchData();
+  // }, []);
 
   const Container = styled.div`
   text-align: center;

@@ -1,8 +1,7 @@
 import React from "react";
 import { VectorMap } from "react-jvectormap";
 import styled from "@emotion/styled";
-// const { getName } = require("country-list");
-import { getName } from "./CountryList";
+import { getCode } from "./CountryList";
 /**
  * Functional code for the map component. Doesn't have the code to display the income levels yet. 
 */
@@ -10,41 +9,29 @@ class Map extends React.Component {
   state = {
     countriesCodesArray: [],
     countriesNamesArray: [],
-    // countriesIncomeLevelsArray: [],
     data: {},
-    title: "",
-    titleSet: false,
-    color: "#48aeef"
+    color: "#00000"
   };
 
-  handleChange = e => {
-    this.setState({
-      title: e.target.value
-    });
-    console.log(e.target.value);
-  };
-
-  handleFormSubmit = () => {
-    this.setState({
-      titleSet: true
-    });
-  };
-
-  getCountriesNamesList = () => {
-    const { countriesCodesArray } = this.state;
-    const list = countriesCodesArray.map(code => getName(code));
-    console.log(list);
+  getCountriesCodesList = () => {
+    const { countriesNamesArray } = this.state;
+    for (let name in countriesNamesArray) {
+      console.log(name);
+    }
+    const list = countriesNamesArray.map(name => getCode(name));
     this.setState(
       {
-        countriesNamesArray: list
+        countriesCodesArray: list
       },
       () => this.makeMapDataStructure()
     );
+    console.log("test")
   };
 
   // getCountriesNamesList = () => {
   //   const { countriesCodesArray } = this.state;
   //   const list = countriesCodesArray.map(code => getName(code));
+  //   console.log(list);
   //   this.setState(
   //     {
   //       countriesNamesArray: list
@@ -57,36 +44,30 @@ class Map extends React.Component {
     const { countriesCodesArray } = this.state;
     let obj = {};
     //{CN: 5, MX: 5, TX: 5}
-    countriesCodesArray.forEach(countryCode => (obj[countryCode] = 5));
+    for (let countryCode in countriesCodesArray) {
+      obj[countryCode] = "test"
+    }
+    console.log(obj)
     this.setState({
       data: obj
     });
   };
 
   render() {
-    const { countriesNamesArray, data, title, titleSet, color } = this.state;
+    const { countriesCodesArray, data, title, titleSet, color } = this.state;
     // console.log(data)
     return (
       <div>
-        <Container>
-          {titleSet ? (
-            <h3>{title}</h3>
-          ) : (
-            <div>
-              <h1>Income Level Visualization on a World Map</h1>
-            </div>
-          )}
-        </Container>
         <VectorMap
-          map={"world_mill"}
-          backgroundColor="transparent"
-          zoomOnScroll={false}
-          containerStyle={{
+          map = {"world_mill"}
+          backgroundColor = "transparent"
+          zoomOnScroll = {false}
+          containerStyle = {{
             width: "100%",
             height: "520px"
           }}
-          containerClassName="map"
-          regionStyle={{
+          containerClassName = "map"
+          regionStyle = {{
             initial: {
               fill: "#e4e4e4",
               "fill-opacity": 0.9,
@@ -101,7 +82,7 @@ class Map extends React.Component {
             selectedHover: {}
           }}
           regionsSelectable={false}
-          series={{
+          series = {{
             regions: [
               {
                 values: data,

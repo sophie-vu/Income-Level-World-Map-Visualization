@@ -3,25 +3,23 @@ const data = require("./data.json");
 /** Precompute name and code lookups. */
 var nameMap = {}
 var codeMap = {}
-// console.log(data)
-for (let obj in data[1]) {
-  console.log(data[1][obj])
-  mapCodeAndName(data[1][obj])
+for (let obj in data) {
+  mapCodeAndName(data[obj])
 }
 
 function mapCodeAndName (country) {
-  nameMap[country.name] = country.code
-  codeMap[country.incomeLevel] = country.incomeLevel
+  nameMap[country.name] = country.incomeLevel
+  // console.log("INCOME LEVEL", country.incomeLevel.value)
+  codeMap[country.incomeLevel.value] = country.name
+  // console.log("NAME", country.name)
+}
+
+function getName (code) {
+  return codeMap[code.toLowerCase()]
 }
 
 function getCode (name) {
   return nameMap[name.toLowerCase()]
-}
-
-function getName (code) {
-  console.log(code.toString())
-  console.log(codeMap[code.toLowerCase()])
-  return codeMap[code.toLowerCase()]
 }
 
 function getNames () {
@@ -32,7 +30,7 @@ function getNames () {
 
 function getCodes () {
   return data.map(function (country) {
-    return country.code
+    return country.incomeLevel.value
   })
 }
 
@@ -44,4 +42,4 @@ function getNameList () {
   return nameMap
 }
 
-export { getName };
+export { getCode };
